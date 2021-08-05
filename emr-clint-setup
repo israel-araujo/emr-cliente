@@ -1,0 +1,76 @@
+"""""""""
+warning
+
+First thin add your VPN your company  in your Security Groups
+
+ElasticMapReduce-Master-Private
+
+dont forget associate a key pair (aws keypair)
+
+in new terminal insid path that key pair are there 
+
+pate ssh host emr and replace as exemple below
+
+"""""""""
+
+
+ssh -i ~/key-pair.pem hadoop@ip-10-111-1-111.ec2.internal
+
+change to
+
+ssh -i ~/key-pair.pem hadoop@10.111.1.111
+
+
+
+
+➜  keypairsaws ssh -i emr-cluster-dev.pem hadoop@10.111.1.111
+The authenticity of host '10.111.1.111 (10.111.1.111)' can't be established.
+ECDSA key fingerprint is SHA256:jO+N/XWBJ3TFChMouSkRAfiE3O9kHqv6ojdaBr51YG8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '10.111.1.111' (ECDSA) to the list of known hosts.
+Last login: Thu Aug  5 13:44:35 2021
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+67 package(s) needed for security, out of 116 available
+Run "sudo yum update" to apply all updates.
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R 
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R 
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+                                                                    
+[hadoop@ip-10-111-4-111 ~]$ 
+
+
+[hadoop@ip-10-111-1-111 ~]$ pyspark
+Python 3.7.9 (default, Aug 27 2020, 21:58:41) 
+[GCC 7.3.1 20180712 (Red Hat 7.3.1-9)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+0    [Thread-4] WARN  org.apache.hadoop.hive.conf.HiveConf  - HiveConf of name hive.server2.thrift.url does not exist
+2312 [Thread-4] WARN  org.apache.spark.deploy.yarn.Client  - Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.7-amzn-0
+      /_/
+
+Using Python version 3.7.9 (default, Aug 27 2020 21:58:41)
+SparkSession available as 'spark'.
+>>> 
+
+you can work with command line inside pyspark client or submeted your job it easy and elegant for us.
