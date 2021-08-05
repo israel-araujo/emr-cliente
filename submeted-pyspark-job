@@ -1,0 +1,38 @@
+"""""
+First you must change you script that catch in your aws emr console
+before sumited it.
+
+""""
+[hadoop@ip-10-111-4-111 ~]$ 
+
+
+[3~spark-submit --deploy-mode cluster --master yarn 
+--py-files s3://bucket-us-east-1-account-number/folders/file.zip 
+--conf spark.yarn.appMasterEnv.AWS_REGION=us-east-1 
+--conf spark.executorEnv.AWS_REGION=us-east-1 
+--conf spark.serializer=org.apache.spark.serializer.KryoSerializer 
+--conf spark.sql.hive.convertMetastoreParquet=false 
+--jars /usr/lib/spark/external/lib/spark-avro.jar,/usr/lib/spark/jars/httpclient-4.5.9.jar,/home/hadoop/extrajars/* 
+s3://bucket-us-east-1-account-number/folders/glue_job/file.py
+ {'s3_object_name_stage': 
+  's3://'partition': '2100-01-01'}
+
+
+[hadoop@ip-10-111-4-111 ~]$ 
+
+
+
+spark-submit --deploy-mode client --master yarn  # here change mode cluester to client for run only this node
+--py-files s3://bucket-us-east-1-account-number/folders/file.zip 
+--conf spark.yarn.appMasterEnv.AWS_REGION=us-east-1 
+--conf spark.executorEnv.AWS_REGION=us-east-1 
+--conf spark.serializer=org.apache.spark.serializer.KryoSerializer 
+--conf spark.sql.hive.convertMetastoreParquet=false 
+--jars /usr/lib/spark/external/lib/spark-avro.jar,/usr/lib/spark/jars/httpclient-4.5.9.jar,/home/hadoop/extrajars/* 
+s3://bucket-us-east-1-account-number/folders/glue_job/file.py
+ "{'s3_object_name_stage': 
+  's3://'partition': '2100-01-01'}"             # this quote abstract your search in dynamoDb whose work key and value 
+
+
+  key = s3_object_name_stage
+  value =  s3://'partition': '2100-01-01' 
